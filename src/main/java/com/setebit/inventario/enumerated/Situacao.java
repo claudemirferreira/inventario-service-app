@@ -1,4 +1,4 @@
-package com.setebit.inventario.model;
+package com.setebit.inventario.enumerated;
 
 public enum Situacao {
 

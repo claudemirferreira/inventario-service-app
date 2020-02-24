@@ -1,5 +1,6 @@
 package com.setebit.inventario.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,12 +10,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "inv_inventario")
-public class Inventario {
+public class Inventario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "inv_id")
 	private Date data;
 
+	@Column(length = 40, nullable = false)
+	private String nome;
+
+	@Column(length = 1, nullable = false)
 	private String status;
 
 	public Date getData() {
