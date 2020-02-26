@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.setebit.inventario.model.PerfilRotina;
 
 @Repository
-public interface PerfilRotinaRepositorio extends JpaRepository<PerfilRotina, Long> {
+public interface PerfilRotinaRepositorio extends JpaRepository<PerfilRotina, Integer> {
 
 }

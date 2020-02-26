@@ -1,5 +1,7 @@
 package com.setebit.inventario.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,20 +11,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "inv_produto")
-public class Produto {
-	
+public class Produto extends AbstractEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "prod_id")
 	private Integer id;
-	
+
 	private String codigoBarras;
-	
+
 	private String nome;
-	
+
 	private String endereco;
-	
-	private Float quantidade;
+
+	private Float quantidadeSistema;
+
+	private Float quantidadeFisica;
 
 	public Integer getId() {
 		return id;
@@ -56,21 +62,30 @@ public class Produto {
 		this.endereco = endereco;
 	}
 
-	public Float getQuantidade() {
-		return quantidade;
+	public Float getQuantidadeSistema() {
+		return quantidadeSistema;
 	}
 
-	public void setQuantidade(Float quantidade) {
-		this.quantidade = quantidade;
+	public void setQuantidadeSistema(Float quantidadeSistema) {
+		this.quantidadeSistema = quantidadeSistema;
 	}
 
-	public Produto(Integer id, String codigoBarras, String nome, String endereco, Float quantidade) {
-		super();
+	public Float getQuantidadeFisica() {
+		return quantidadeFisica;
+	}
+
+	public void setQuantidadeFisica(Float quantidadeFisica) {
+		this.quantidadeFisica = quantidadeFisica;
+	}
+
+	public Produto(Integer id, String codigoBarras, String nome, String endereco, Float quantidadeSistema,
+			Float quantidadeFisica) {
 		this.id = id;
 		this.codigoBarras = codigoBarras;
 		this.nome = nome;
 		this.endereco = endereco;
-		this.quantidade = quantidade;
+		this.quantidadeSistema = quantidadeSistema;
+		this.quantidadeFisica = quantidadeFisica;
 	}
 
 	@Override
@@ -97,5 +112,5 @@ public class Produto {
 			return false;
 		return true;
 	}
-	
+
 }

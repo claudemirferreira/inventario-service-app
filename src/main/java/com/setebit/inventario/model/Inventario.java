@@ -1,21 +1,26 @@
 package com.setebit.inventario.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "inv_inventario")
-public class Inventario implements Serializable {
+public class Inventario extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "inv_id")
+	private Integer id;
+
+	@Column(name = "data")
 	private Date data;
 
 	@Column(length = 40, nullable = false)
@@ -40,36 +45,30 @@ public class Inventario implements Serializable {
 		this.status = status;
 	}
 
-	public Inventario() {}
-	
-	public Inventario(Date data, String status) {
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Inventario() {
+	}
+
+	public Inventario(Integer id, Date data, String nome, String status) {
+		this.id = id;
 		this.data = data;
+		this.nome = nome;
 		this.status = status;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((data == null) ? 0 : data.hashCode());
-		return result;
+	public Integer getId() {
+		return id;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Inventario other = (Inventario) obj;
-		if (data == null) {
-			if (other.data != null)
-				return false;
-		} else if (!data.equals(other.data))
-			return false;
-		return true;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
 }

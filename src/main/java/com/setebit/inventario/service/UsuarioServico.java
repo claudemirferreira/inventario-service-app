@@ -23,7 +23,7 @@ public interface UsuarioServico extends UserDetailsService {
 
 	public Usuario findByEmail(String email);
 
-	public Usuario findByOne(Long id);
+	public Usuario findByOne(Integer id);
 
 	public Usuario findByLoginAndSenha(String login, String senha) throws NoResultException;
 

@@ -46,20 +46,9 @@ public class Usuario implements Serializable {
 
 	private ProfileEnum profile;
 
-	private boolean zona;
-
-	private boolean area;
-
-	private boolean nucleo;
-
-	private boolean in_privilegio;
-
 	@Lob
 	@Column(name = "logomarca")
 	private byte[] logomarca;
-
-	@Column
-	private String telefone;
 
 	@Column(unique = true, length = 100)
 	private String email;
@@ -67,13 +56,11 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy = "sistema")
 	private List<Perfil> perfils;
 
-	@Column(name = "id_membro")
-	private Integer idMembro;
-
-	@Column
+	@Column(length = 100, nullable = false)
 	private String nome;
-	
-	public Usuario() {}
+
+	public Usuario() {
+	}
 
 	public Usuario(int id) {
 		this.id = id;
@@ -130,60 +117,12 @@ public class Usuario implements Serializable {
 		this.status = status;
 	}
 
-	public boolean isZona() {
-		return zona;
-	}
-
-	public void setZona(boolean zona) {
-		this.zona = zona;
-	}
-
-	public boolean isArea() {
-		return area;
-	}
-
-	public void setArea(boolean area) {
-		this.area = area;
-	}
-
-	public boolean isNucleo() {
-		return nucleo;
-	}
-
-	public void setNucleo(boolean nucleo) {
-		this.nucleo = nucleo;
-	}
-
-	public Integer getIdMembro() {
-		return idMembro;
-	}
-
-	public void setIdMembro(Integer idMembro) {
-		this.idMembro = idMembro;
-	}
-
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public boolean isIn_privilegio() {
-		return in_privilegio;
-	}
-
-	public void setIn_privilegio(boolean in_privilegio) {
-		this.in_privilegio = in_privilegio;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
 	}
 
 	public String getEmail() {
@@ -203,9 +142,9 @@ public class Usuario implements Serializable {
 	}
 
 	public ProfileEnum getProfile() {
-		if(profile == null) 
+		if (profile == null)
 			profile = ProfileEnum.ROLE_TECHNICIAN;
-		
+
 		return profile;
 	}
 

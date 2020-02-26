@@ -32,9 +32,6 @@ public class UsuarioRepositorioJPAImpl extends RepositorioGenerico implements Us
 			if (notEmpty(usuario.getLogin()) && usuario.getLogin().length() >= 0) {
 				condictions.add(" usu.login = :login ");
 			}
-			if (usuario.getIdMembro() > 0) {
-				condictions.add(" usu.idMembro = :idMembro ");
-			}
 		}
 
 		String orderBy = " order by usu.nome ";
@@ -47,9 +44,6 @@ public class UsuarioRepositorioJPAImpl extends RepositorioGenerico implements Us
 			}
 			if (notEmpty(usuario.getLogin()) && usuario.getLogin().length() >= 0) {
 				query.setParameter("login", usuario.getLogin());
-			}
-			if (usuario.getIdMembro() > 0) {
-				query.setParameter("idMembro", usuario.getIdMembro());
 			}
 		}
 

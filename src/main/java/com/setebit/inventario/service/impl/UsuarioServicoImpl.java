@@ -71,7 +71,7 @@ public class UsuarioServicoImpl implements UsuarioServico {
 	}
 
 	@Override
-	public Usuario findByOne(Long id) {
+	public Usuario findByOne(Integer id) {
 		return usuarioRepositorio.getOne(id);
 	}
 
