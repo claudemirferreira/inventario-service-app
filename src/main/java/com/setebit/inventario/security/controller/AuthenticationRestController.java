@@ -42,10 +42,15 @@ public class AuthenticationRestController {
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest)
 			throws AuthenticationException {
 
+		System.out.println("email="+authenticationRequest.getEmail());
+		System.out.println("senha="+authenticationRequest.getPassword());
+		
 		final Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
 						authenticationRequest.getPassword()));
+		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		final UsuarioDTO user = UsuarioDTO.getDTO(usuarioService.findByEmail(authenticationRequest.getEmail()));

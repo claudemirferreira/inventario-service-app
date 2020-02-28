@@ -71,6 +71,7 @@ public class PerfilServicoImpl implements PerfilServico {
 	}
 
 	public List<PerfilDTO> listarPerfilDto() {
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		JwtUser user = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Perfil> list = this.perfilRepositorio.listarPerfilUsuario(2, Integer.parseInt(user.getId()));
 
