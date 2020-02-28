@@ -1,6 +1,8 @@
 package com.setebit.inventario.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "inv_contagem")
@@ -22,9 +28,14 @@ public class Contagem extends AbstractEntity implements Serializable {
 	@Column(name = "cont_id")
 	private Integer id;
 
+	@NotNull(message = "a contagem deve ser informada")
 	private Integer numeroContagem;
 
 	private Float quantidade;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "contagem")
+	private List<Lancamento> lancamentos = new ArrayList<Lancamento>(); 
 
 	@ManyToOne
 	@JoinColumn(name = "prod_id")
@@ -61,5 +72,49 @@ public class Contagem extends AbstractEntity implements Serializable {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-	
+
+	public List<Lancamento> getLancamentos() {
+		return lancamentos;
+	}
+
+	public void setLancamentos(List<Lancamento> lancamentos) {
+		this.lancamentos = lancamentos;
+	}
+
+	public Contagem() {
+	}
+
+	public Contagem(Integer id, Integer numeroContagem, Float quantidade, Produto produto) {
+		super();
+		this.id = id;
+		this.numeroContagem = numeroContagem;
+		this.quantidade = quantidade;
+		this.produto = produto;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contagem other = (Contagem) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 }

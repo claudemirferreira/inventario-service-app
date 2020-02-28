@@ -5,31 +5,31 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.setebit.inventario.model.Inventario;
+import com.setebit.inventario.model.Produto;
 import com.setebit.inventario.service.IService;
-import com.setebit.inventario.service.impl.InventarioServiceImpl;
+import com.setebit.inventario.service.ProdutoService;
 
 @RestController
-@RequestMapping("/api/inventario")
-public class InventarioController extends AbstractController<Inventario> {
+@RequestMapping("/api/produto")
+public class ProdutoController extends AbstractController<Produto> {
 
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private InventarioServiceImpl service;
+	private ProdutoService service;
 
 	@Override
-	protected IService<Inventario, Integer> getService() {
+	protected IService<Produto, Integer> getService() {
 		return this.service;
 	}
 
 	@Override
-	public void validateCreate(Inventario entity, BindingResult result) {
+	public void validateCreate(Produto entity, BindingResult result) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void validateUpdate(Inventario entity, BindingResult result) {
+	public void validateUpdate(Produto entity, BindingResult result) {
 		// TODO Auto-generated method stub
 	}
 

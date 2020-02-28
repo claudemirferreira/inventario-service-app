@@ -28,7 +28,7 @@ public class Lancamento extends AbstractEntity implements Serializable {
 	private String observacao;
 
 	@ManyToOne
-	@JoinColumn(name = "cont_id")
+	@JoinColumn(name = "cont_id", referencedColumnName = "cont_id", nullable = false)
 	private Contagem contagem;
 
 	public Integer getId() {

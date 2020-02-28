@@ -1,13 +1,17 @@
 package com.setebit.inventario.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "inv_produto")
@@ -20,15 +24,22 @@ public class Produto extends AbstractEntity implements Serializable {
 	@Column(name = "prod_id")
 	private Integer id;
 
+	@Column(length = 60)
 	private String codigoBarras;
 
+	@Column(length = 100, nullable = false)
 	private String nome;
 
+	@Column(length = 100)
 	private String endereco;
 
 	private Float quantidadeSistema;
 
 	private Float quantidadeFisica;
+
+	@OneToMany(mappedBy = "produto")
+	@JsonIgnore
+	private List<Contagem> contagens;
 
 	public Integer getId() {
 		return id;
@@ -76,6 +87,21 @@ public class Produto extends AbstractEntity implements Serializable {
 
 	public void setQuantidadeFisica(Float quantidadeFisica) {
 		this.quantidadeFisica = quantidadeFisica;
+	}
+
+	public List<Contagem> getContagens() {
+		return contagens;
+	}
+
+	public void setContagens(List<Contagem> contagens) {
+		this.contagens = contagens;
+	}
+
+	public Produto() {
+	}
+	
+	public Produto(Integer id) {
+		this.id = id;		
 	}
 
 	public Produto(Integer id, String codigoBarras, String nome, String endereco, Float quantidadeSistema,
