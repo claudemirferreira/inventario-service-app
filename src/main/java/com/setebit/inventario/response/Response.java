@@ -12,8 +12,8 @@ public class Response<T> {
 		return data;
 	}
 
-	public void setData(T data) {
-		this.data = data;
+	public void setData(T T) {
+		this.data = T;
 	}
 
 	public List<String> getErrors() {

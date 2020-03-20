@@ -1,18 +1,10 @@
 package com.setebit.inventario.model;
 
-import java.io.Serializable;
-
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class AbstractEntity implements Serializable {
+public abstract class AbstractEntity implements BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-
-	public AbstractEntity() {
-
-	}
-
-	public abstract Integer getId();
-
+    
+    
 }
