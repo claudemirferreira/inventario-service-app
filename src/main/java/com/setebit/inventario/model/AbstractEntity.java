@@ -5,6 +5,4 @@ import javax.persistence.*;
 @MappedSuperclass
 public abstract class AbstractEntity implements BaseEntity {
 
-    
-    
 }

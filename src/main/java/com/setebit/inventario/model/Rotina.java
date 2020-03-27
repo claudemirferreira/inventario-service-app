@@ -19,14 +19,14 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "saa_rotina")
-public class Rotina implements Serializable {
+public class Rotina extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = 55549693990924773L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_rotina")
-	private int id;
+	private Integer id;
 
 	@Column(length = 100, nullable = false)
 	private String imagem;
@@ -51,11 +51,11 @@ public class Rotina implements Serializable {
 	@Transient
 	private boolean checked;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

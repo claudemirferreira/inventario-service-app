@@ -12,7 +12,7 @@ import com.setebit.inventario.model.Rotina;
 import com.setebit.inventario.model.Sistema;
 
 @Repository
-public interface RotinaRepositorio extends JpaRepository<Rotina, Integer> {
+public interface RotinaRepository extends JpaRepository<Rotina, Integer> {
 
 	public final static String LISTAR_ROTINA_POR_PERFIL = "SELECT a "
 			+ "FROM PerfilRotina p LEFT JOIN p.perfilRotinaPk.rotina a " + "WHERE p.perfilRotinaPk.perfil = :perfil";

@@ -23,7 +23,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "saa_perfil")
-public class Perfil implements Serializable {
+public class Perfil extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = 7371241296081749393L;
 
@@ -32,13 +32,13 @@ public class Perfil implements Serializable {
 	@Column(name = "id_perfil")
 	private Integer id;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarioPerfilPk.perfil")
-	private List<UsuarioPerfil> usuarioPerfil = new ArrayList<UsuarioPerfil>();
-
-	@OneToMany(fetch = FetchType.EAGER,
-			cascade = { CascadeType.MERGE, CascadeType.REMOVE },
-			mappedBy = "perfilRotinaPk.perfil")
-	private List<PerfilRotina> perfilRotina = new ArrayList<PerfilRotina>();
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarioPerfilPk.perfil")
+//	private List<UsuarioPerfil> usuarioPerfil = new ArrayList<UsuarioPerfil>();
+//
+//	@OneToMany(fetch = FetchType.EAGER,
+//			cascade = { CascadeType.MERGE, CascadeType.REMOVE },
+//			mappedBy = "perfilRotinaPk.perfil")
+//	private List<PerfilRotina> perfilRotina = new ArrayList<PerfilRotina>();
 
 	@Column(length = 30, nullable = false)
 	private String nome;
@@ -61,13 +61,13 @@ public class Perfil implements Serializable {
 		this.id = id;
 	}
 
-	public List<UsuarioPerfil> getUsuarioPerfil() {
-		return usuarioPerfil;
-	}
-
-	public void setUsuarioPerfil(List<UsuarioPerfil> usuarioPerfil) {
-		this.usuarioPerfil = usuarioPerfil;
-	}
+//	public List<UsuarioPerfil> getUsuarioPerfil() {
+//		return usuarioPerfil;
+//	}
+//
+//	public void setUsuarioPerfil(List<UsuarioPerfil> usuarioPerfil) {
+//		this.usuarioPerfil = usuarioPerfil;
+//	}
 
 	public String getNome() {
 		return nome;
@@ -101,12 +101,12 @@ public class Perfil implements Serializable {
 		this.sistema = sistema;
 	}
 
-	public List<PerfilRotina> getPerfilRotina() {
-		return perfilRotina;
-	}
-
-	public void setPerfilRotina(List<PerfilRotina> perfilRotina) {
-		this.perfilRotina = perfilRotina;
-	}
+//	public List<PerfilRotina> getPerfilRotina() {
+//		return perfilRotina;
+//	}
+//
+//	public void setPerfilRotina(List<PerfilRotina> perfilRotina) {
+//		this.perfilRotina = perfilRotina;
+//	}
 
 }

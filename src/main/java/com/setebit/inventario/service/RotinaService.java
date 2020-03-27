@@ -3,18 +3,13 @@ package com.setebit.inventario.service;
 import java.util.List;
 
 import com.setebit.inventario.model.Rotina;
+import com.setebit.inventario.model.Sistema;
 
-public interface RotinaServico {
+public interface RotinaService extends BaseService<Rotina, Integer> {
+	
+	public List<Rotina> listaRotinasPorPerfil(int id) ;
 
-	public List<Rotina> listarTodos();
-
-	public Rotina salvar(Rotina rotina);
-
-	public void remover(Rotina rotina);
-
-	public List<Rotina> listaRotinasPorPerfil(int id);
-
-	public List<Rotina> findByNomeLike(String nome);
+	public List<Rotina> findByNomeLike(String nome) ;
 
 	public List<Rotina> listarRotinaPorPerfil(Integer idPerfil);
 

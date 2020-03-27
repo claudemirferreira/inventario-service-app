@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.setebit.inventario.model.Company;
 import com.setebit.inventario.repository.CompanyRepository;
-import com.setebit.inventario.service.AbstractService;
 import com.setebit.inventario.service.CompanyService;
 
 @Service

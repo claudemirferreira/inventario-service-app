@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.setebit.inventario.model.Sistema;
 
 @Repository
-public interface SistemaRepositorio extends JpaRepository<Sistema, Integer> {
+public interface SistemaRepository extends JpaRepository<Sistema, Integer> {
 
 	@Query("select r from Sistema r where r.nome like :nome")
 	public List<Sistema> findByNomeLike(@Param("nome") String nome);

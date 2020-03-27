@@ -1,41 +1,65 @@
-package com.setebit.inventario.service;
+package com.setebit.inventario.service.impl;
+
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.setebit.inventario.exception.ErrorCode;
-import com.setebit.inventario.exception.NotFoundException;
-
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import com.setebit.inventario.service.BaseService;
 
 public abstract class AbstractService<T, ID> implements BaseService<T, ID> {
 
-    protected abstract CrudRepository<T, ID> getRepository();
+	protected abstract CrudRepository<T, ID> getRepository();
 
-    @Override
-    public T getById(ID id) {
-        try {
-        	Optional<T> product = getRepository().findById(id);
-        	return product.get();
-		} catch (NotFoundException e) {
-			new NotFoundException("Cannot find entity by id: " + id, ErrorCode.OBJECT_NOT_FOUND);
-			return null;
-		} catch (NoSuchElementException e) {
-			new NotFoundException("Cannot find entity by id: " + id, ErrorCode.OBJECT_NOT_FOUND);
-			return null;
-		}catch (Exception e) {
-			new NotFoundException("Cannot find entity by id: " + id, ErrorCode.OBJECT_NOT_FOUND);
+	@Override
+	public T findById(ID id) {
+		try {
+			Optional<T> product = getRepository().findById(id);
+			return product.get();
+		} catch (Exception e) {
 			return null;
 		}
-        
-        //
-        
-        
-    }
+	}
 
-    @Override
-    public List<T> getAll() {
-        return (List<T>) getRepository().findAll();
-    }
+	@Override
+	public List<T> findAll() {
+		return (List<T>) getRepository().findAll();
+	}
+
+	@Override
+	public void deleteById(ID id) {
+		getRepository().deleteById(id);
+	}
+
+	@Override
+	public void delete(T entity) {
+		getRepository().delete(entity);
+	}
+
+	@Override
+	public long count() {
+		return getRepository().count();
+	}
+
+	public boolean existsById(ID id) {
+		return getRepository().existsById(id);
+	}
+
+	public T save(T entity) {
+		return getRepository().save(entity);
+
+	}
+
+	public Iterable<T> saveAll(List<T> list) {
+		return getRepository().saveAll(list);
+	}
+
+	public Iterable<T> findAllById(Iterable<ID> ids) {
+		return getRepository().findAllById(ids);
+	}
+
+	public void deleteAll() {
+		getRepository().deleteAll();
+	}
+
 }

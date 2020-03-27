@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -14,28 +15,39 @@ import com.setebit.inventario.model.Rotina;
 import com.setebit.inventario.repository.PerfilRepositorio;
 import com.setebit.inventario.repository.PerfilRepositorioSql;
 import com.setebit.inventario.repository.PerfilRotinaRepositorioSql;
-import com.setebit.inventario.repository.RotinaRepositorio;
+import com.setebit.inventario.repository.RotinaRepository;
 import com.setebit.inventario.security.jwt.JwtUser;
 import com.setebit.inventario.service.PerfilServico;
 
 @Service
-public class PerfilServicoImpl implements PerfilServico {
+public class PerfilServicoImpl extends AbstractService<Perfil, Integer> implements PerfilServico {
+
+	private PerfilRepositorio repository;
+
+	@Autowired
+	public PerfilServicoImpl(PerfilRepositorio repository) {
+		this.repository = repository;
+	}
+
+	@Override
+	protected CrudRepository<Perfil, Integer> getRepository() {
+		return repository;
+	}
 
 	@Autowired
 	private PerfilRepositorio perfilRepositorio;
-
 
 	@Autowired
 	private PerfilRepositorioSql perfilRepositorioSql;
 
 	@Autowired
-	private RotinaRepositorio rotinaRepositorio;
+	private RotinaRepository rotinaRepositorio;
 
 	@Autowired
 	private PerfilRotinaRepositorioSql perfilRotinaRepositorioSql;
 
 	@Override
-	public List<Perfil> listarTodos() {
+	public List<Perfil> findAll() {
 		return this.perfilRepositorio.findAll();
 	}
 
@@ -71,7 +83,6 @@ public class PerfilServicoImpl implements PerfilServico {
 	}
 
 	public List<PerfilDTO> listarPerfilDto() {
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		JwtUser user = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Perfil> list = this.perfilRepositorio.listarPerfilUsuario(2, Integer.parseInt(user.getId()));
 

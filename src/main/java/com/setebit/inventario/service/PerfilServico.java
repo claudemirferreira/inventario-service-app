@@ -6,9 +6,7 @@ import com.setebit.inventario.dto.PerfilDTO;
 import com.setebit.inventario.dto.RotinaDTO;
 import com.setebit.inventario.model.Perfil;
 
-public interface PerfilServico {
-
-	public List<Perfil> listarTodos();
+public interface PerfilServico extends BaseService<Perfil, Integer> {
 
 	public Perfil salvar(Perfil perfil);
 

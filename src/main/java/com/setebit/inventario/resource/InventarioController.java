@@ -1,36 +1,28 @@
 package com.setebit.inventario.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.setebit.inventario.dto.InventarioDTO;
 import com.setebit.inventario.model.Inventario;
-import com.setebit.inventario.service.IService;
-import com.setebit.inventario.service.impl.InventarioServiceImpl;
+import com.setebit.inventario.service.BaseService;
+import com.setebit.inventario.service.InventarioService;
 
 @RestController
-@RequestMapping("/api/inventario")
-public class InventarioController extends AbstractController<Inventario> {
-
-	private static final long serialVersionUID = 1L;
+@RequestMapping("/api/invetario")
+public class InventarioController extends AbstractController<Inventario, Integer, InventarioDTO> {
 
 	@Autowired
-	private InventarioServiceImpl service;
+	private InventarioService service;
 
 	@Override
-	protected IService<Inventario, Integer> getService() {
-		return this.service;
+	protected BaseService<Inventario, Integer> getService() {
+		return service;
 	}
 
 	@Override
-	public void validateCreate(Inventario entity, BindingResult result) {
-		// TODO Auto-generated method stub
+	protected Class<InventarioDTO> getDtoClass() {
+		return InventarioDTO.class;
 	}
-
-	@Override
-	public void validateUpdate(Inventario entity, BindingResult result) {
-		// TODO Auto-generated method stub
-	}
-
 }
