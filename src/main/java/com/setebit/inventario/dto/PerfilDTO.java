@@ -30,7 +30,7 @@ public class PerfilDTO implements Serializable {
 	public PerfilDTO(Perfil perfil) {
 		this.id = perfil.getId();
 		this.nome = perfil.getNome();
-		this.imagem = perfil.getImagem().replace("resources/imagens/perfil/", "").replace(".png", "");
+		this.imagem = perfil.getImagem();
 	}
 
 	public Integer getId() {

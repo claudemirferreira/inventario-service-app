@@ -23,14 +23,14 @@ import com.setebit.inventario.enumerated.ProfileEnum;
  */
 @Entity
 @Table(name = "saa_usuario")
-public class Usuario implements Serializable {
+public class Usuario extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = -7789936704890560797L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
-	private int id;
+	private Integer id;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarioPerfilPk.usuario")
 	private List<UsuarioPerfil> usuarioPerfil = new ArrayList<UsuarioPerfil>();
@@ -62,12 +62,16 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(int id) {
+	public Usuario(Integer id) {
 		this.id = id;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Transient

@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.setebit.inventario.enumerated.ProfileEnum;
 import com.setebit.inventario.model.Usuario;
-import com.setebit.inventario.repository.UsuarioRepositorio;
+import com.setebit.inventario.repository.UsuarioRepository;
 
 @SpringBootApplication
 public class InventarioApplication {
@@ -18,14 +18,14 @@ public class InventarioApplication {
 	}
 
 	@Bean
-	CommandLineRunner init(UsuarioRepositorio rep, PasswordEncoder passwordEncoder) {
+	CommandLineRunner init(UsuarioRepository rep, PasswordEncoder passwordEncoder) {
 		return args -> {
 			initUsuario(rep, passwordEncoder);
 		};
 
 	}
 
-	private void initUsuario(UsuarioRepositorio rep, PasswordEncoder passwordEncoder) {
+	private void initUsuario(UsuarioRepository rep, PasswordEncoder passwordEncoder) {
 		Usuario admin = new Usuario();
 		admin.setEmail("admin@gmail.com");
 		admin.setSenha(passwordEncoder.encode("123456"));

@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.setebit.inventario.model.Usuario;
 
-public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 	@Query("select u from Usuario u where u.login = :login")
 	public Usuario findByLogin(@Param("login") String login);

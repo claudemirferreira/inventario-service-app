@@ -20,7 +20,7 @@ import com.setebit.inventario.dto.UsuarioDTO;
 import com.setebit.inventario.security.jwt.CurrentUser;
 import com.setebit.inventario.security.jwt.JwtAuthenticationRequest;
 import com.setebit.inventario.security.jwt.JwtTokenUtil;
-import com.setebit.inventario.service.UsuarioServico;
+import com.setebit.inventario.service.UsuarioService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -36,7 +36,7 @@ public class AuthenticationRestController {
 	private UserDetailsService userDetailsService;
 
 	@Autowired
-	private UsuarioServico usuarioService;
+	private UsuarioService usuarioService;
 
 	@PostMapping(value = "/api/auth")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest)
