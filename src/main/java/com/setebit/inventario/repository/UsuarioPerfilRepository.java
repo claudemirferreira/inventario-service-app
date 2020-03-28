@@ -12,7 +12,7 @@ import com.setebit.inventario.model.Usuario;
 import com.setebit.inventario.model.UsuarioPerfil;
 
 @Repository
-public interface UsuarioPerfilRepositorio extends JpaRepository<UsuarioPerfil, Integer> {
+public interface UsuarioPerfilRepository extends JpaRepository<UsuarioPerfil, Integer> {
 
 	@Query("select up from UsuarioPerfil up " + " where up.usuarioPerfilPk.usuario = :usuario "
 			+ " and up.usuarioPerfilPk.perfil = :perfil ")

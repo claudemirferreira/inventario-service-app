@@ -12,30 +12,20 @@ import com.setebit.inventario.dto.PerfilDTO;
 import com.setebit.inventario.dto.RotinaDTO;
 import com.setebit.inventario.model.Perfil;
 import com.setebit.inventario.model.Rotina;
-import com.setebit.inventario.repository.PerfilRepositorio;
+import com.setebit.inventario.repository.PerfilRepository;
 import com.setebit.inventario.repository.PerfilRepositorioSql;
 import com.setebit.inventario.repository.PerfilRotinaRepositorioSql;
 import com.setebit.inventario.repository.RotinaRepository;
 import com.setebit.inventario.security.jwt.JwtUser;
-import com.setebit.inventario.service.PerfilServico;
+import com.setebit.inventario.service.PerfilService;
 
 @Service
-public class PerfilServicoImpl extends AbstractService<Perfil, Integer> implements PerfilServico {
+public class PerfilServiceImpl extends AbstractService<Perfil, Integer> implements PerfilService {
 
-	private PerfilRepositorio repository;
-
-	@Autowired
-	public PerfilServicoImpl(PerfilRepositorio repository) {
-		this.repository = repository;
-	}
-
-	@Override
-	protected CrudRepository<Perfil, Integer> getRepository() {
-		return repository;
-	}
+	private PerfilRepository repository;
 
 	@Autowired
-	private PerfilRepositorio perfilRepositorio;
+	private PerfilRepository perfilRepositorio;
 
 	@Autowired
 	private PerfilRepositorioSql perfilRepositorioSql;
@@ -46,19 +36,14 @@ public class PerfilServicoImpl extends AbstractService<Perfil, Integer> implemen
 	@Autowired
 	private PerfilRotinaRepositorioSql perfilRotinaRepositorioSql;
 
-	@Override
-	public List<Perfil> findAll() {
-		return this.perfilRepositorio.findAll();
+	@Autowired
+	public PerfilServiceImpl(PerfilRepository repository) {
+		this.repository = repository;
 	}
 
 	@Override
-	public Perfil salvar(Perfil perfil) {
-		return this.perfilRepositorio.save(perfil);
-	}
-
-	@Override
-	public void remover(Perfil perfil) {
-		this.perfilRepositorio.delete(perfil);
+	protected CrudRepository<Perfil, Integer> getRepository() {
+		return repository;
 	}
 
 	@Override

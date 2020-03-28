@@ -6,11 +6,7 @@ import com.setebit.inventario.dto.PerfilDTO;
 import com.setebit.inventario.dto.RotinaDTO;
 import com.setebit.inventario.model.Perfil;
 
-public interface PerfilServico extends BaseService<Perfil, Integer> {
-
-	public Perfil salvar(Perfil perfil);
-
-	public void remover(Perfil perfil);
+public interface PerfilService extends BaseService<Perfil, Integer> {
 
 	public List<Perfil> findByNomeLike(String nome);
 

@@ -11,7 +11,7 @@ import com.setebit.inventario.model.Perfil;
 import com.setebit.inventario.model.Sistema;
 
 @Repository
-public interface PerfilRepositorio extends JpaRepository<Perfil, Integer> {
+public interface PerfilRepository extends JpaRepository<Perfil, Integer> {
 
 	@Query("select r from Perfil r where r.nome like :nome")
 	public List<Perfil> findByNomeLike(@Param("nome") String nome);

@@ -21,7 +21,7 @@ import javax.persistence.Transient;
 @AssociationOverrides({
 		@AssociationOverride(name = "perfilRotinaPk.rotina", joinColumns = @JoinColumn(name = "id_rotina")),
 		@AssociationOverride(name = "perfilRotinaPk.perfil", joinColumns = @JoinColumn(name = "id_perfil")) })
-@Table( name = "saa_perfil_rotina" )
+@Table(name = "saa_perfil_rotina")
 public class PerfilRotina implements Serializable {
 
 	private static final long serialVersionUID = -1220797610390530939L;
@@ -38,7 +38,6 @@ public class PerfilRotina implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
-	
 	public Perfil getPerfil() {
 		return perfilRotinaPk.getPerfil();
 	}
@@ -70,7 +69,7 @@ public class PerfilRotina implements Serializable {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		return perfilRotinaPk.equals(obj);
@@ -80,5 +79,5 @@ public class PerfilRotina implements Serializable {
 	public int hashCode() {
 		return perfilRotinaPk.hashCode();
 	}
-	
+
 }

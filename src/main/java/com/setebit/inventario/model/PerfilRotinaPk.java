@@ -18,6 +18,7 @@ public class PerfilRotinaPk implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_rotina")
 	private Rotina rotina;
+
 	@ManyToOne
 	@JoinColumn(name = "id_perfil")
 	private Perfil perfil;
@@ -47,12 +48,10 @@ public class PerfilRotinaPk implements Serializable {
 			return false;
 		}
 		final PerfilRotinaPk other = (PerfilRotinaPk) obj;
-		if (this.rotina != other.rotina
-				&& (this.rotina == null || !this.rotina.equals(other.rotina))) {
+		if (this.rotina != other.rotina && (this.rotina == null || !this.rotina.equals(other.rotina))) {
 			return false;
 		}
-		if (this.perfil != other.perfil
-				&& (this.perfil == null || !this.perfil.equals(other.perfil))) {
+		if (this.perfil != other.perfil && (this.perfil == null || !this.perfil.equals(other.perfil))) {
 			return false;
 		}
 		return true;

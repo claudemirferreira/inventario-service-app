@@ -17,9 +17,6 @@ public class RotinaServiceImpl extends AbstractService<Rotina, Integer> implemen
 	private RotinaRepository repository;
 	
 	@Autowired
-	private RotinaRepository rotinaRepositorio;
-
-	@Autowired
 	private RotinaRepositorioSql rotinaRepositorioSql;
 
 	@Autowired
@@ -40,11 +37,11 @@ public class RotinaServiceImpl extends AbstractService<Rotina, Integer> implemen
 
 	@Override
 	public List<Rotina> findByNomeLike(String nome) {
-		return this.rotinaRepositorio.findByNomeLike(nome);
+		return this.repository.findByNomeLike(nome);
 	}
 
 	@Override
 	public List<Rotina> listarRotinaPorPerfil(Integer idPerfil) {
-		return this.rotinaRepositorio.listarRotinaPorPerfil(idPerfil);
+		return this.repository.listarRotinaPorPerfil(idPerfil);
 	}
 }
